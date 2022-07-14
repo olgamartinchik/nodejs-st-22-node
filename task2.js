@@ -9,7 +9,7 @@ const writeTxt = fs.createWriteStream(txtFile, "utf-8");
 const readCsv = fs.createReadStream(csvFile, "utf-8");
 
 readCsv.on("data", (data) => {
-  console.log(data);
+  console.log("++", data);
 });
 
 const handleError = () => {
