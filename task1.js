@@ -1,5 +1,7 @@
+const os = require("os");
+const endLine = os.EOL;
 function ask() {
-  process.stdout.write(`\nWright something... > \n\n`);
+  process.stdout.write(`\nWright something... > ${endLine}${endLine}`);
 }
 
 process.stdin.on("data", (data) => {
@@ -7,7 +9,7 @@ process.stdin.on("data", (data) => {
     process.exit();
   }
   process.stdout.write(
-    data.toString().trim().split("").reverse().join("") + "\n\n"
+    data.toString().trim().split("").reverse().join("") + endLine + endLine
   );
 });
 
