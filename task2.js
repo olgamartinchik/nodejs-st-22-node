@@ -22,7 +22,12 @@ writeTxt.on("error", handleError);
 
 csv()
   .fromStream(readCsv)
-  .subscribe((json) => {
-    console.log("++", json);
-    writeTxt.write(JSON.stringify(json) + "\n");
+  .subscribe((line) => {
+    console.log("++", line);
+    let obj = {};
+    for (const key in line) {
+      obj[key.toLowerCase()] = +line[key] || line[key];
+    }
+
+    writeTxt.write(JSON.stringify(obj) + "\n");
   });
